@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mayhaw</title>
+<meta name="description" content="Mayhaw makes small things, properly. A world where no problem is too small to be solved well.">
+<meta name="theme-color" content="#101B17">
+<link rel="canonical" href="https://mayhawco.com/">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mayhawco.com/">
+<meta property="og:title" content="Mayhaw">
+<meta property="og:description" content="No problem is too small to be solved well.">
+<meta property="og:image" content="https://mayhawco.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+
+<style>
+@font-face{font-family:Fraunces;src:url(/fonts/Fraunces-display.woff2) format('woff2');font-weight:500;font-display:swap}
+@font-face{font-family:Archivo;src:url(/fonts/Archivo-400.woff2) format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:Archivo;src:url(/fonts/Archivo-500.woff2) format('woff2');font-weight:500;font-display:swap}
+@font-face{font-family:'IBM Plex Mono';src:url(/fonts/IBMPlexMono-400.woff2) format('woff2');font-weight:400;font-display:swap}
+
+:root{
+  --ground:#101B17;
+  --ink:#E9EDE3;
+  --muted:#8A9C90;
+  --berry:#D9503C;
+  --hair:rgba(233,237,227,.11);
+  --serif:Fraunces,'Hoefler Text',Georgia,serif;
+  --sans:Archivo,'Helvetica Neue',Arial,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  min-height:100svh;
+  background:var(--ground);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  overflow-x:hidden;
+}
+
+/* ---------- atmosphere ---------- */
+#water{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.grain{
+  position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.045;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.95' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ---------- layout ---------- */
+.stage{
+  position:relative;z-index:2;
+  min-height:100svh;
+  display:flex;flex-direction:column;
+  padding:clamp(30px,5vw,60px) clamp(28px,8vw,132px);
+}
+main{flex:1;display:flex;align-items:center}
+.col{width:100%;min-width:0;max-width:36rem}
+
+/* ---------- type ---------- */
+.eyebrow{
+  margin:0 0 clamp(24px,3.2vw,34px);
+  font-family:var(--mono);font-size:10.5px;font-weight:400;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--muted);
+}
+.wordmark{
+  display:block;
+  width:clamp(232px,29vw,404px);max-width:100%;height:auto;
+  margin:0 0 clamp(44px,5.6vw,66px);
+}
+.vision{
+  margin:0 0 clamp(22px,2.6vw,28px);
+  font-family:var(--serif);font-weight:500;
+  font-size:clamp(1.62rem,3.5vw,2.55rem);
+  line-height:1.2;letter-spacing:-.012em;
+  text-wrap:balance;
+}
+.note{
+  margin:0;max-width:33rem;
+  font-size:clamp(14.5px,1.15vw,15.5px);line-height:1.72;color:var(--muted);
+}
+.contact{
+  margin:clamp(34px,4vw,44px) 0 0;
+  font-size:15px;
+}
+.contact a{
+  color:var(--ink);font-weight:500;text-decoration:none;
+  padding-bottom:3px;
+  border-bottom:1px solid var(--hair);
+  transition:border-color .45s cubic-bezier(.2,.8,.25,1),color .45s cubic-bezier(.2,.8,.25,1);
+}
+.contact a:hover,.contact a:focus-visible{border-bottom-color:var(--berry)}
+
+footer{
+  display:flex;justify-content:space-between;align-items:baseline;gap:20px;
+  padding-top:clamp(40px,5vw,56px);
+  font-family:var(--mono);font-size:10px;letter-spacing:.17em;
+  text-transform:uppercase;color:var(--muted);
+}
+footer span:last-child{white-space:nowrap;opacity:.72}
+
+/* ---------- entrance ---------- */
+@keyframes rise{from{opacity:0;transform:translateY(11px)}to{opacity:1;transform:none}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.r{animation:rise 1.15s cubic-bezier(.16,1,.3,1) both;animation-delay:var(--d,0s)}
+#water{animation:fade 3.2s ease-out both;animation-delay:.15s}
+.grain{animation:fade 2s ease-out both;animation-delay:.6s}
+
+.berry{
+  transform-box:fill-box;transform-origin:center;
+  animation:rise .9s cubic-bezier(.22,1.3,.4,1) both;animation-delay:1.05s;
+}
+
+@media (prefers-reduced-motion:reduce){
+  .r,.berry,#water,.grain{animation:none}
+}
+
+:focus-visible{outline:2px solid var(--berry);outline-offset:4px;border-radius:2px}
+
+@media (max-width:520px){
+  .vision{font-size:1.55rem}
+  footer{flex-direction:column;gap:9px;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+
+<canvas id="water" aria-hidden="true"></canvas>
+<div class="grain" aria-hidden="true"></div>
+
+<div class="stage">
+  <main>
+    <div class="col">
+      <p class="eyebrow r" style="--d:.15s">Mayhaw LLC &nbsp;·&nbsp; Est. 2026</p>
+
+      <div class="r" style="--d:.3s">
+        <svg xmlns="http://www.w3.org/2000/svg" class="wordmark" viewBox="0 0 7198 1974" role="img" aria-label="Mayhaw">
+
+<g transform="translate(1.0 1484.0) scale(1.00000 -1.00000)">
+<g fill="#E9EDE3">
+<path transform="translate(0 0)" d="M866 461 818 430 1148 1341Q1160 1377 1174.0 1388.5Q1188 1400 1213 1400H1523Q1537 1400 1543.5 1393.5Q1550 1387 1550 1377Q1550 1368 1545.0 1361.5Q1540 1355 1528 1351L1455 1337Q1433 1332 1424.0 1316.5Q1415 1301 1417 1272L1498 116Q1500 88 1508.0 77.5Q1516 67 1537 62L1608 49Q1619 47 1624.5 41.0Q1630 35 1630 24Q1630 14 1623.0 7.0Q1616 0 1602 0H1113Q1099 0 1092.0 6.5Q1085 13 1085 23Q1085 33 1090.5 39.5Q1096 46 1107 49L1179 62Q1201 68 1210.5 79.0Q1220 90 1218 116L1137 1248L1174 1258L780 151Q769 120 758.5 111.0Q748 102 736 102Q727 102 719.0 106.0Q711 110 704.0 121.0Q697 132 689 154L268 1241L301 1265L223 171Q221 132 244.5 105.0Q268 78 313 63L385 47Q394 44 398.5 38.5Q403 33 403 24Q403 13 397.0 6.5Q391 0 377 0H26Q12 0 5.5 6.5Q-1 13 -1 23Q-1 34 5.0 40.0Q11 46 22 50L77 64Q116 76 140.5 102.5Q165 129 169 172L244 1221Q248 1273 240.5 1301.5Q233 1330 207 1336L139 1348Q124 1354 117.0 1359.5Q110 1365 110 1375Q110 1400 142 1400H460Q481 1400 495.0 1389.5Q509 1379 520 1348Z"/>
+<path transform="translate(1626 0)" d="M564 103V117L550 111V716Q550 785 519.5 822.5Q489 860 434 860Q375 860 344.5 831.5Q314 803 314 764V693Q314 641 279.5 607.5Q245 574 188 574Q143 574 116.5 599.0Q90 624 90 672Q90 728 133.0 779.5Q176 831 260.0 864.5Q344 898 467 898Q630 898 711.0 829.5Q792 761 792 636V138Q792 107 803.5 91.5Q815 76 834 76Q850 76 862.5 85.5Q875 95 879 115Q881 119 883.5 121.0Q886 123 889 123Q896 123 899.0 118.5Q902 114 902 106Q902 82 883.5 53.0Q865 24 825.5 2.5Q786 -19 724 -19Q644 -19 604.0 15.5Q564 50 564 103ZM44 196Q44 310 137.5 377.5Q231 445 421 445Q478 445 519.0 434.5Q560 424 593 407L581 378Q549 393 515.0 401.5Q481 410 440 410Q366 410 326.0 364.0Q286 318 286 235Q286 154 324.0 112.5Q362 71 422 71Q466 71 507.0 91.5Q548 112 575 149L589 122Q545 54 467.5 17.5Q390 -19 299 -19Q185 -19 114.5 41.0Q44 101 44 196Z"/>
+<path transform="translate(2497 0)" d="M590 192 462 -95 121 715Q99 769 73.5 797.0Q48 825 12 834Q-1 839 -4.5 844.0Q-8 849 -8 856Q-8 866 -1.5 872.0Q5 878 15 878H444Q455 878 460.5 872.5Q466 867 466 857Q466 848 461.5 843.5Q457 839 446 835L389 826Q364 820 358.0 799.0Q352 778 367 744ZM404 -216 494 12 520 71 768 723Q785 769 775.5 792.0Q766 815 731 824L683 835Q672 839 668.0 843.5Q664 848 664 856Q664 867 670.0 872.5Q676 878 687 878H927Q939 878 945.5 872.5Q952 867 952 857Q952 849 948.0 844.5Q944 840 933 835Q886 824 861.0 800.5Q836 777 814 721L447 -222Q411 -318 380.5 -377.0Q350 -436 311.5 -463.0Q273 -490 210 -490Q125 -490 73.5 -439.0Q22 -388 22 -315Q22 -263 48.5 -233.5Q75 -204 117 -204Q151 -204 174.0 -225.5Q197 -247 212 -293L224 -333Q233 -365 247.5 -386.5Q262 -408 286 -408Q305 -408 323.0 -386.0Q341 -364 360.5 -321.0Q380 -278 404 -216Z"/>
+<path transform="translate(3404 0)" d="M370 1458V96Q370 75 376.0 64.5Q382 54 396 50L444 40Q460 34 460 20Q460 0 438 0H58Q48 0 41.5 5.5Q35 11 35 20Q35 28 40.0 33.5Q45 39 55 43L102 52Q116 56 122.0 66.0Q128 76 128 96V1330Q128 1344 124.0 1350.0Q120 1356 109 1358L51 1359Q42 1362 38.0 1366.5Q34 1371 34 1378Q34 1387 39.5 1392.0Q45 1397 56 1402L303 1474Q321 1481 329.5 1482.5Q338 1484 346 1484Q358 1484 364.0 1477.0Q370 1470 370 1458ZM348 664 327 689 364 723Q463 816 537.5 857.0Q612 898 680 898Q775 898 826.5 838.5Q878 779 893 658L963 100Q966 78 972.0 66.5Q978 55 994 51L1037 42Q1046 38 1050.0 33.0Q1054 28 1054 20Q1054 11 1048.0 5.5Q1042 0 1031 0H645Q623 0 623 20Q623 34 640 40L688 50Q706 54 713.0 66.0Q720 78 717 98L656 614Q645 694 617.5 732.0Q590 770 534 770Q498 770 461.5 752.0Q425 734 383 695Z"/>
+<path transform="translate(4426 0)" d="M564 103V117L550 111V716Q550 785 519.5 822.5Q489 860 434 860Q375 860 344.5 831.5Q314 803 314 764V693Q314 641 279.5 607.5Q245 574 188 574Q143 574 116.5 599.0Q90 624 90 672Q90 728 133.0 779.5Q176 831 260.0 864.5Q344 898 467 898Q630 898 711.0 829.5Q792 761 792 636V138Q792 107 803.5 91.5Q815 76 834 76Q850 76 862.5 85.5Q875 95 879 115Q881 119 883.5 121.0Q886 123 889 123Q896 123 899.0 118.5Q902 114 902 106Q902 82 883.5 53.0Q865 24 825.5 2.5Q786 -19 724 -19Q644 -19 604.0 15.5Q564 50 564 103ZM44 196Q44 310 137.5 377.5Q231 445 421 445Q478 445 519.0 434.5Q560 424 593 407L581 378Q549 393 515.0 401.5Q481 410 440 410Q366 410 326.0 364.0Q286 318 286 235Q286 154 324.0 112.5Q362 71 422 71Q466 71 507.0 91.5Q548 112 575 149L589 122Q545 54 467.5 17.5Q390 -19 299 -19Q185 -19 114.5 41.0Q44 101 44 196Z"/>
+<path transform="translate(5297 0)" d="M468 -2H374Q359 -2 349.0 6.0Q339 14 332 32L82 783Q74 805 64.5 814.5Q55 824 41 828L4 836Q-6 841 -9.5 846.0Q-13 851 -13 857Q-13 867 -7.0 872.5Q-1 878 10 878H421Q431 878 436.0 873.0Q441 868 441 858Q441 851 437.5 845.5Q434 840 425 836L379 827Q352 821 345.5 803.5Q339 786 349 755L535 179L479 83L699 758L739 735L508 28Q502 12 491.5 5.0Q481 -2 468 -2ZM1033 -2H941Q927 -2 916.0 6.0Q905 14 899 32L650 781Q643 803 634.0 813.0Q625 823 612 827L580 835Q571 840 567.0 845.0Q563 850 563 857Q563 878 585 878H995Q1017 878 1017 857Q1017 849 1012.5 844.5Q1008 840 997 836L946 823Q916 816 911.0 801.0Q906 786 914 761L1101 175L1042 77L1244 721Q1259 765 1248.0 791.5Q1237 818 1201 827L1158 836Q1147 840 1143.0 844.5Q1139 849 1139 857Q1139 867 1145.5 872.5Q1152 878 1162 878H1390Q1401 878 1407.5 872.5Q1414 867 1414 857Q1414 850 1410.0 845.0Q1406 840 1396 835L1372 827Q1348 818 1329.0 792.5Q1310 767 1293 717L1074 29Q1069 12 1058.5 5.0Q1048 -2 1033 -2Z"/>
+</g>
+<circle fill="#D9503C" class="berry" cx="6992" cy="199" r="205"/>
+</g>
+</svg>
+      </div>
+
+      <h1 class="vision r" style="--d:.52s">No problem is too small to be solved well.</h1>
+
+      <p class="note r" style="--d:.68s">Mayhaws grow wild in river bottoms and ripen for three weeks in May.
+      Nobody plants them. They only get picked because somebody goes out for them.</p>
+
+      <p class="contact r" style="--d:.84s"><a href="mailto:hello@mayhawco.com">hello@mayhawco.com</a></p>
+    </div>
+  </main>
+
+  <footer class="r" style="--d:1s">
+    <span id="season">&nbsp;</span>
+    <span>&copy; 2026 Mayhaw LLC</span>
+  </footer>
+</div>
+
+<script>
+(function () {
+  // How long until the fruit is ready. The page knows what time of year it is.
+  var now = new Date(), y = now.getFullYear();
+  var el = document.getElementById('season');
+  if (now.getMonth() === 4) {
+    el.textContent = 'Mayhaws are ripe';
+  } else {
+    var may = new Date(y, 4, 1);
+    if (now > may) may = new Date(y + 1, 4, 1);
+    var days = Math.ceil((may - now) / 864e5);
+    el.textContent = 'Mayhaws ripen in ' + days + ' day' + (days === 1 ? '' : 's');
+  }
+
+  var canvas = document.getElementById('water'), ctx = canvas.getContext('2d');
+  var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var W = 0, H = 0;
+
+  // Low, wide pools of warm light on dark water. Nothing here should be
+  // noticeable on its own — it exists so the flat colour has somewhere to sit.
+  var pools = [
+    { x:.78, y:.86, rx:1.15, ry:.62, c:'224,145,47', a:.105, sp:.000047, ph:0 },
+    { x:.20, y:.44, rx:.95,  ry:.52, c:'176,54,38',  a:.062, sp:.000071, ph:2.2 },
+    { x:.52, y:.06, rx:1.35, ry:.60, c:'74,107,78',  a:.048, sp:.000035, ph:4.4 }
+  ];
+
+  function resize() {
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = canvas.clientWidth; H = canvas.clientHeight;
+    canvas.width = W * dpr; canvas.height = H * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    if (still) draw(0);
+  }
+
+  function draw(t) {
+    ctx.clearRect(0, 0, W, H);
+    ctx.globalCompositeOperation = 'lighter';
+    for (var i = 0; i < pools.length; i++) {
+      var p = pools[i];
+      var cx = W * (p.x + .085 * Math.sin(t * p.sp + p.ph));
+      var cy = H * (p.y + .035 * Math.sin(t * p.sp * .63 + p.ph * 1.7));
+      var rx = W * p.rx, ry = H * p.ry;
+      ctx.save();
+      ctx.translate(cx, cy);
+      ctx.scale(rx, ry);
+      var g = ctx.createRadialGradient(0, 0, 0, 0, 0, 1);
+      g.addColorStop(0,   'rgba(' + p.c + ',' + p.a + ')');
+      g.addColorStop(.45, 'rgba(' + p.c + ',' + (p.a * .34) + ')');
+      g.addColorStop(1,   'rgba(' + p.c + ',0)');
+      ctx.fillStyle = g;
+      ctx.beginPath(); ctx.arc(0, 0, 1, 0, 6.2832); ctx.fill();
+      ctx.restore();
+    }
+  }
+
+  var raf;
+  function loop(t) { draw(t); raf = requestAnimationFrame(loop); }
+
+  window.addEventListener('resize', function () {
+    cancelAnimationFrame(raf); resize();
+    if (!still) raf = requestAnimationFrame(loop);
+  }, { passive: true });
+
+  resize();
+  if (!still) raf = requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>

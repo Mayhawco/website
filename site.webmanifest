@@ -1,0 +1,20 @@
+{
+  "name": "Mayhaw",
+  "short_name": "Mayhaw",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#101B17",
+  "background_color": "#101B17",
+  "display": "standalone",
+  "description": "No problem is too small to be solved well."
+}
