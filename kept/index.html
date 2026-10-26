@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kept — a Mayhaw app</title>
+<meta name="description" content="Kept is a quiet iPhone tracker for the habits you keep, the people you reach, and the places you go — and it proves, on your phone, which ones actually change your sleep, weight, and mood. No account. No server. Nothing leaves your phone.">
+<meta name="theme-color" content="#101B17">
+<link rel="canonical" href="https://mayhawco.com/kept/">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mayhawco.com/kept/">
+<meta property="og:title" content="Kept — a Mayhaw app">
+<meta property="og:description" content="The habits, people, and places that make a life — and proof they're working. Private by design: nothing leaves your phone.">
+<meta property="og:image" content="https://mayhawco.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+
+<style>
+@font-face{font-family:Archivo;src:url(/fonts/Archivo-400.woff2) format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:Archivo;src:url(/fonts/Archivo-500.woff2) format('woff2');font-weight:500;font-display:swap}
+@font-face{font-family:'IBM Plex Mono';src:url(/fonts/IBMPlexMono-400.woff2) format('woff2');font-weight:400;font-display:swap}
+
+:root{
+  --ground:#101B17;
+  --raise:#15221D;
+  --ink:#E9EDE3;
+  --muted:#8A9C90;
+  --berry:#D9503C;
+  --moss:#7FA07C;
+  --hair:rgba(233,237,227,.11);
+  /* Fraunces is subset to the homepage's glyphs only, so display type here
+     uses a full system serif — same warm register, every glyph present. */
+  --display:'Hoefler Text',Georgia,'Times New Roman',serif;
+  --sans:Archivo,'Helvetica Neue',Arial,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--ground);color:var(--ink);
+  font-family:var(--sans);font-size:16px;line-height:1.62;
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+  overflow-x:hidden;
+}
+
+/* atmosphere — static (no canvas): warm pools + grain, as on the homepage */
+.sky{position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(60vw 42vh at 80% 88%, rgba(224,145,47,.10), transparent 70%),
+    radial-gradient(52vw 40vh at 16% 30%, rgba(176,54,38,.07), transparent 70%),
+    radial-gradient(64vw 44vh at 55% 4%, rgba(74,107,78,.06), transparent 72%);}
+.grain{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.045;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.95' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+
+.stage{position:relative;z-index:2;max-width:46rem;margin:0 auto;
+  padding:clamp(30px,5vw,64px) clamp(28px,7vw,72px) clamp(56px,7vw,96px);}
+
+/* back / eyebrow */
+.top{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:clamp(44px,7vw,80px);
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);}
+.top a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--hair);padding-bottom:2px;transition:border-color .4s,color .4s}
+.top a:hover,.top a:focus-visible{color:var(--ink);border-bottom-color:var(--berry)}
+
+h1{font-family:var(--display);font-weight:500;font-size:clamp(3rem,10vw,5.2rem);line-height:.98;letter-spacing:-.015em;margin:0 0 .18em}
+.lede{font-family:var(--display);font-weight:500;font-size:clamp(1.5rem,3.6vw,2.3rem);line-height:1.22;letter-spacing:-.01em;text-wrap:balance;margin:0 0 1.1rem;color:var(--ink)}
+.note{max-width:34rem;color:var(--muted);font-size:clamp(15px,1.2vw,16.5px);line-height:1.72;margin:0 0 clamp(40px,6vw,64px)}
+
+h2{font-family:var(--mono);font-size:11px;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:var(--moss);
+  margin:clamp(44px,6vw,68px) 0 1.1rem}
+.pillars{display:grid;gap:1px;background:var(--hair);border:1px solid var(--hair);border-radius:3px;overflow:hidden}
+.pillar{background:var(--raise);padding:22px 24px}
+.pillar h3{font-family:var(--display);font-weight:500;font-size:1.35rem;margin:0 0 .3em;letter-spacing:-.01em}
+.pillar p{margin:0;color:var(--muted);font-size:15px;line-height:1.62}
+.pillar .tag{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--moss);display:block;margin-bottom:.7em}
+
+.prose p{max-width:34rem;color:var(--ink);font-size:16px;line-height:1.72;margin:0 0 1rem}
+.prose p.sub{color:var(--muted)}
+.ev{font-family:var(--display);font-style:italic;font-size:clamp(1.2rem,2.6vw,1.6rem);line-height:1.35;color:var(--ink);
+  border-left:2px solid var(--moss);padding-left:18px;margin:0 0 1rem;max-width:33rem}
+
+.private{background:var(--raise);border:1px solid var(--hair);border-radius:4px;padding:clamp(24px,4vw,34px);margin-top:1.2rem}
+.private h3{font-family:var(--display);font-weight:500;font-size:1.5rem;margin:0 0 .5em;letter-spacing:-.01em}
+.private ul{margin:.6em 0 0;padding:0;list-style:none}
+.private li{position:relative;padding:.4em 0 .4em 20px;color:var(--muted);font-size:15px;line-height:1.6;border-top:1px solid var(--hair)}
+.private li:first-child{border-top:none}
+.private li::before{content:"";position:absolute;left:0;top:1.05em;width:7px;height:7px;border-radius:50%;background:var(--moss)}
+.private li b{color:var(--ink);font-weight:500}
+
+.cta{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin:clamp(40px,6vw,64px) 0 0}
+.badge{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+  border:1px solid var(--hair);border-radius:999px;padding:10px 18px}
+.cta a{color:var(--ink);font-weight:500;text-decoration:none;border-bottom:1px solid var(--hair);padding-bottom:3px;
+  transition:border-color .4s,color .4s}
+.cta a:hover,.cta a:focus-visible{border-bottom-color:var(--berry)}
+
+footer{display:flex;justify-content:space-between;align-items:baseline;gap:20px;flex-wrap:wrap;
+  margin-top:clamp(56px,8vw,96px);padding-top:clamp(28px,4vw,40px);border-top:1px solid var(--hair);
+  font-family:var(--mono);font-size:10px;letter-spacing:.17em;text-transform:uppercase;color:var(--muted)}
+footer a{color:var(--muted);text-decoration:none;border-bottom:1px solid transparent;transition:color .4s,border-color .4s}
+footer a:hover,footer a:focus-visible{color:var(--ink);border-bottom-color:var(--berry)}
+
+:focus-visible{outline:2px solid var(--berry);outline-offset:4px;border-radius:2px}
+
+@keyframes rise{from{opacity:0;transform:translateY(11px)}to{opacity:1;transform:none}}
+.r{animation:rise 1.05s cubic-bezier(.16,1,.3,1) both;animation-delay:var(--d,0s)}
+@media (prefers-reduced-motion:reduce){.r{animation:none}}
+
+@media (max-width:560px){
+  .pillars{grid-template-columns:1fr}
+  footer{flex-direction:column;gap:10px;align-items:flex-start}
+}
+@media (min-width:561px){.pillars{grid-template-columns:1fr 1fr 1fr}}
+</style>
+</head>
+<body>
+
+<div class="sky" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+
+<div class="stage">
+  <div class="top r" style="--d:.05s">
+    <a href="/">← Mayhaw</a>
+    <span>An app, made properly</span>
+  </div>
+
+  <h1 class="r" style="--d:.15s">Kept</h1>
+  <p class="lede r" style="--d:.28s">The habits you keep, the people you reach, the places you go — and proof of which ones are working.</p>
+  <p class="note r" style="--d:.4s">Most trackers ask you to believe streaks matter. Kept shows you. It quietly
+  compares the days you kept a commitment against the days you missed it — against your real sleep, weight, and mood —
+  and tells you, in plain numbers, what each one actually changes. Walks, workouts, and early nights check themselves
+  off through Apple Health. Arriving at the gym or the trailhead counts through places you choose. A real call to someone
+  you promised to stay close to counts the moment you hang up.</p>
+
+  <h2 class="r" style="--d:.5s">Three pillars</h2>
+  <div class="pillars r" style="--d:.56s">
+    <div class="pillar">
+      <span class="tag">To do</span>
+      <h3>Habits</h3>
+      <p>The things you do daily that change you — walks, lifting, reading, sleep. Many check themselves off from Apple Health.</p>
+    </div>
+    <div class="pillar">
+      <span class="tag">To reach</span>
+      <h3>People</h3>
+      <p>Keep your people, not just your habits. Commit to call someone monthly; a real, connected call counts — a text does not.</p>
+    </div>
+    <div class="pillar">
+      <span class="tag">To go</span>
+      <h3>Places</h3>
+      <p>The gym, the top of a hike, her house. Arriving is the keeping — the app notices, the map never leaves your phone.</p>
+    </div>
+  </div>
+
+  <h2 class="r">Does it work?</h2>
+  <div class="prose r">
+    <p class="ev">“On the mornings after you keep an early night, you sleep 41 minutes longer.”</p>
+    <p class="sub">Kept's evidence engine reads your own history and reports the effect of each commitment on your sleep, weight,
+    and a daily one-tap mood — kept-vs-missed medians, labelled by how strong the signal is. It's the question a habit
+    tracker should answer and almost none do: not “did you keep your streak,” but “is this actually making your life better?”
+    Every number is computed on your iPhone, from your data, and shown back to you — never sent anywhere.</p>
+  </div>
+
+  <h2 class="r">Private by design</h2>
+  <div class="private r">
+    <h3>Nothing leaves your phone.</h3>
+    <ul>
+      <li><b>No account, no server.</b> There is nothing to sign up for because there is nothing to send. Kept has no backend.</li>
+      <li><b>No tracking, no analytics, no ads.</b> The App Store privacy label reads “Data Not Collected,” and it's literally true.</li>
+      <li><b>Apple Health, read in place.</b> Weight, sleep, and workouts are read on the device to compute your results. Nothing is written back or uploaded.</li>
+      <li><b>Your own words stay yours.</b> Journal entries and the on-device AI that summarizes your week never leave the phone.</li>
+      <li><b>Yours to take.</b> Export everything, any time, no permission asked.</li>
+    </ul>
+  </div>
+
+  <div class="cta r">
+    <span class="badge">Coming to iPhone</span>
+    <a href="/kept/privacy/">Privacy policy</a>
+    <a href="mailto:hello@mayhawco.com">hello@mayhawco.com</a>
+  </div>
+
+  <footer class="r">
+    <span><a href="/">Mayhaw</a></span>
+    <span>&copy; 2026 Mayhaw LLC</span>
+  </footer>
+</div>
+
+</body>
+</html>

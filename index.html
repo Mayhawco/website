@@ -105,6 +105,13 @@ main{flex:1;display:flex;align-items:center}
 }
 .contact a:hover,.contact a:focus-visible{border-bottom-color:var(--berry)}
 
+.making{margin:clamp(32px,3.8vw,42px) 0 0}
+.making .label{margin:0 0 11px;font-family:var(--mono);font-size:10.5px;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.product{margin:0;max-width:33rem;font-size:15px;line-height:1.7}
+.product a{color:var(--ink);font-weight:500;text-decoration:none;padding-bottom:3px;border-bottom:1px solid var(--hair);transition:border-color .45s cubic-bezier(.2,.8,.25,1),color .45s cubic-bezier(.2,.8,.25,1)}
+.product a:hover,.product a:focus-visible{border-bottom-color:var(--berry)}
+.product span{color:var(--muted)}
+
 footer{
   display:flex;justify-content:space-between;align-items:baseline;gap:20px;
   padding-top:clamp(40px,5vw,56px);
@@ -169,7 +176,12 @@ footer span:last-child{white-space:nowrap;opacity:.72}
       <p class="note r" style="--d:.68s">Mayhaws grow wild in river bottoms and ripen for three weeks in May.
       Nobody plants them. They only get picked because somebody goes out for them.</p>
 
-      <p class="contact r" style="--d:.84s"><a href="mailto:hello@mayhawco.com">hello@mayhawco.com</a></p>
+      <div class="making r" style="--d:.82s">
+        <p class="label">Making</p>
+        <p class="product"><a href="/kept/">Kept</a> — a quiet tracker for the habits, people, and places that make a life, and proof of which ones are working. <span>Coming to iPhone.</span></p>
+      </div>
+
+      <p class="contact r" style="--d:.96s"><a href="mailto:hello@mayhawco.com">hello@mayhawco.com</a></p>
     </div>
   </main>
 

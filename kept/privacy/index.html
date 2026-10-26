@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kept — Privacy Policy</title>
+<meta name="description" content="Kept's privacy policy. Kept has no account, no server, and no analytics. Your health, journal, location, and contact data stay on your iPhone and are never transmitted. Data Not Collected.">
+<meta name="theme-color" content="#101B17">
+<link rel="canonical" href="https://mayhawco.com/kept/privacy/">
+<meta name="robots" content="index,follow">
+
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+
+<style>
+@font-face{font-family:Archivo;src:url(/fonts/Archivo-400.woff2) format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:Archivo;src:url(/fonts/Archivo-500.woff2) format('woff2');font-weight:500;font-display:swap}
+@font-face{font-family:'IBM Plex Mono';src:url(/fonts/IBMPlexMono-400.woff2) format('woff2');font-weight:400;font-display:swap}
+
+:root{
+  --ground:#101B17;--raise:#15221D;--ink:#E9EDE3;--muted:#8A9C90;--berry:#D9503C;--moss:#7FA07C;
+  --hair:rgba(233,237,227,.11);
+  --display:'Hoefler Text',Georgia,'Times New Roman',serif;
+  --sans:Archivo,'Helvetica Neue',Arial,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.7;
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden}
+.grain{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.04;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.95' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+
+.stage{position:relative;z-index:1;max-width:42rem;margin:0 auto;
+  padding:clamp(30px,5vw,60px) clamp(28px,7vw,72px) clamp(56px,7vw,96px)}
+
+.top{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:clamp(40px,6vw,64px);
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.top a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--hair);padding-bottom:2px;transition:color .4s,border-color .4s}
+.top a:hover,.top a:focus-visible{color:var(--ink);border-bottom-color:var(--berry)}
+
+h1{font-family:var(--display);font-weight:500;font-size:clamp(2.3rem,6vw,3.3rem);line-height:1.04;letter-spacing:-.015em;margin:0 0 .3em}
+.updated{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 clamp(32px,5vw,48px)}
+.summary{font-family:var(--display);font-style:italic;font-size:clamp(1.25rem,2.8vw,1.7rem);line-height:1.34;color:var(--ink);
+  border-left:2px solid var(--moss);padding-left:20px;margin:0 0 clamp(36px,5vw,52px)}
+
+h2{font-family:var(--display);font-weight:500;font-size:clamp(1.3rem,2.6vw,1.65rem);letter-spacing:-.01em;
+  margin:clamp(34px,5vw,48px) 0 .5em}
+p{color:var(--ink);margin:0 0 1rem;max-width:36rem}
+p.muted{color:var(--muted)}
+a.inline{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--hair);padding-bottom:1px;transition:color .4s,border-color .4s}
+a.inline:hover,a.inline:focus-visible{border-bottom-color:var(--berry)}
+ul{margin:0 0 1rem;padding:0;list-style:none;max-width:36rem}
+li{position:relative;padding:.35em 0 .35em 20px;color:var(--muted)}
+li::before{content:"";position:absolute;left:0;top:1em;width:6px;height:6px;border-radius:50%;background:var(--moss)}
+li b{color:var(--ink);font-weight:500}
+strong{font-weight:500;color:var(--ink)}
+
+footer{display:flex;justify-content:space-between;align-items:baseline;gap:20px;flex-wrap:wrap;
+  margin-top:clamp(52px,8vw,88px);padding-top:clamp(28px,4vw,40px);border-top:1px solid var(--hair);
+  font-family:var(--mono);font-size:10px;letter-spacing:.17em;text-transform:uppercase;color:var(--muted)}
+footer a{color:var(--muted);text-decoration:none;border-bottom:1px solid transparent;transition:color .4s,border-color .4s}
+footer a:hover,footer a:focus-visible{color:var(--ink);border-bottom-color:var(--berry)}
+:focus-visible{outline:2px solid var(--berry);outline-offset:4px;border-radius:2px}
+@media (max-width:560px){footer{flex-direction:column;gap:10px;align-items:flex-start}}
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<div class="stage">
+  <div class="top">
+    <a href="/kept/">← Kept</a>
+    <span>Mayhaw LLC</span>
+  </div>
+
+  <h1>Privacy Policy</h1>
+  <p class="updated">Kept for iPhone &nbsp;·&nbsp; Effective October 25, 2026</p>
+
+  <p class="summary">Kept has no account and no server. Your data stays on your iPhone and is never sent to us or anyone else — because there is nowhere for it to be sent.</p>
+
+  <p>This policy explains how <strong>Kept</strong>, an iPhone app made by Mayhaw LLC (“we”, “us”), handles your
+  information. The short version is the whole version: Kept is built so that your data never leaves your device.
+  We operate no servers, keep no accounts, and have no way to see anything you track.</p>
+
+  <h2>What we collect</h2>
+  <p><strong>Nothing.</strong> Kept does not collect, transmit, sell, or share any personal data. It contains no analytics,
+  no advertising, no tracking technologies, and no third-party SDKs that phone home. The app makes no network requests of
+  its own. On the App Store, Kept's privacy label is <strong>“Data Not Collected.”</strong></p>
+
+  <h2>What stays on your device</h2>
+  <p>Everything Kept uses to work is created and stored only on your iPhone (and, if you enable it in a future version,
+  synced privately through your own iCloud account, which we cannot read). That includes:</p>
+  <ul>
+    <li><b>Apple Health data.</b> With your permission, Kept <em>reads</em> metrics such as weight, sleep, steps, workouts, and dietary energy to check off habits automatically and to compute how your habits affect your health. This data is read on the device, is never written back to Health, and is never uploaded. You can grant or revoke this access any time in the Health app.</li>
+    <li><b>Location.</b> If you create a place-based commitment, Kept uses location to notice when you arrive at a place <em>you</em> chose. It monitors only for those arrivals — it does not record or transmit a location history. The map never leaves your phone.</li>
+    <li><b>Contacts.</b> When you add a person to a relationship commitment, you pick them through Apple's system contact picker, which runs outside the app — Kept never gains access to your contact list, only to the single entry you choose (their name, number, photo, and birthday month/day), stored locally.</li>
+    <li><b>Your journal and mood.</b> Daily notes and the one-tap mood you log are stored on the device and shown only to you.</li>
+    <li><b>Your commitments and history.</b> The habits you create and the days you keep them live in the app's local database.</li>
+  </ul>
+
+  <h2>On-device intelligence</h2>
+  <p>Kept can summarize your week's journal and surface gentle observations using <strong>Apple Intelligence</strong>, which
+  runs entirely on your iPhone. Your journal text and personal data are processed on the device and are never sent to us or
+  to any external service. On devices without Apple Intelligence, these features fall back to simple templates, and the app
+  works fully without them.</p>
+
+  <h2>Payments</h2>
+  <p>Kept is free. If we offer an optional tip or a paid tier, purchases are handled entirely by <strong>Apple's App Store</strong>
+  through StoreKit. We never see your payment details; Apple's own
+  <a class="inline" href="https://www.apple.com/legal/privacy/">privacy policy</a> governs that transaction.</p>
+
+  <h2>Crash and diagnostic data</h2>
+  <p>Kept includes no crash-reporting or analytics tools of its own. If you have turned on “Share with App Developers” in
+  iOS Settings, Apple may share anonymized, aggregated crash statistics with us through App Store Connect. This is controlled
+  entirely by Apple and your device settings, contains no personal data, and you can turn it off in Settings → Privacy &amp;
+  Security → Analytics &amp; Improvements.</p>
+
+  <h2>Your data is yours</h2>
+  <p>Because your data lives only on your device, you are always in control of it. You can export everything from within the
+  app at any time, and deleting the app removes all of its data from your iPhone. There is no account to close and no copy
+  of your data held anywhere else.</p>
+
+  <h2>Children</h2>
+  <p>Kept is not directed to children under 13 and does not knowingly collect information from anyone. Because the app
+  collects no data at all, it holds nothing about any user, of any age.</p>
+
+  <h2>Changes to this policy</h2>
+  <p>If this policy changes, we will update this page and revise the effective date above. Material changes that affect how
+  the app handles data will be noted in the app's release notes.</p>
+
+  <h2>Contact</h2>
+  <p>Questions about privacy or anything else: <a class="inline" href="mailto:hello@mayhawco.com">hello@mayhawco.com</a>.</p>
+
+  <footer>
+    <span><a href="/kept/">Kept</a> &nbsp;·&nbsp; <a href="/">Mayhaw</a></span>
+    <span>&copy; 2026 Mayhaw LLC</span>
+  </footer>
+</div>
+
+</body>
+</html>
