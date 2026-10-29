@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-label="Plumb">
+  <defs>
+    <linearGradient id="plumbBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0C0A08"/>
+      <stop offset="1" stop-color="#060504"/>
+    </linearGradient>
+  </defs>
+  <rect width="1024" height="1024" fill="url(#plumbBg)"/>
+  <!-- honest error band: the measurement's uncertainty, drawn as a region -->
+  <path d="M570,700 A320,320 0 0 0 513,517.3" fill="none"
+        stroke="#E7B643" stroke-opacity="0.20" stroke-width="54" stroke-linecap="round"/>
+  <!-- reference limb (baseline) -->
+  <line x1="250" y1="700" x2="858" y2="700" stroke="#8A8178" stroke-width="28" stroke-linecap="round"/>
+  <!-- measured limb -->
+  <line x1="250" y1="700" x2="826" y2="300" stroke="#F1EEE9" stroke-width="28" stroke-linecap="round"/>
+  <!-- the arc: the mark the number comes from -->
+  <path d="M570,700 A320,320 0 0 0 513,517.3" fill="none"
+        stroke="#E7B643" stroke-width="15" stroke-linecap="round"/>
+  <!-- joint -->
+  <circle cx="250" cy="700" r="22" fill="#E7B643"/>
+  <!-- the reading -->
+  <circle cx="513" cy="517.3" r="12" fill="#E7B643"/>
+</svg>

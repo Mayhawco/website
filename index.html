@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Mayhaw</title>
-<meta name="description" content="Mayhaw makes small things, properly. A world where no problem is too small to be solved well.">
+<meta name="description" content="Mayhaw is an independent software studio making Kept and Plumb for iPhone — small things, made properly. No problem is too small to be solved well.">
 <meta name="theme-color" content="#101B17">
 <link rel="canonical" href="https://mayhawco.com/">
 
@@ -105,12 +105,19 @@ main{flex:1;display:flex;align-items:center}
 }
 .contact a:hover,.contact a:focus-visible{border-bottom-color:var(--berry)}
 
-.making{margin:clamp(32px,3.8vw,42px) 0 0}
-.making .label{margin:0 0 11px;font-family:var(--mono);font-size:10.5px;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
-.product{margin:0;max-width:33rem;font-size:15px;line-height:1.7}
-.product a{color:var(--ink);font-weight:500;text-decoration:none;padding-bottom:3px;border-bottom:1px solid var(--hair);transition:border-color .45s cubic-bezier(.2,.8,.25,1),color .45s cubic-bezier(.2,.8,.25,1)}
-.product a:hover,.product a:focus-visible{border-bottom-color:var(--berry)}
-.product span{color:var(--muted)}
+.making{margin:clamp(34px,4.4vw,50px) 0 0}
+.making > .label{margin:0 0 clamp(16px,2vw,20px);font-family:var(--mono);font-size:10.5px;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.works{display:flex;flex-direction:column;gap:clamp(18px,2.4vw,24px)}
+.work{display:flex;gap:17px;align-items:flex-start;text-decoration:none;color:inherit}
+.work-icon{flex:none;width:58px;height:58px;border-radius:14px;background:#000;
+  box-shadow:0 0 0 1px rgba(233,237,227,.09), 0 7px 20px rgba(0,0,0,.33)}
+.work-body{min-width:0;padding-top:1px}
+.work-top{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:0 0 5px}
+.work-name{font-family:var(--serif);font-weight:500;font-size:1.3rem;letter-spacing:-.01em;color:var(--ink);
+  border-bottom:1.5px solid transparent;transition:border-color .45s cubic-bezier(.2,.8,.25,1)}
+.work-status{font-family:var(--mono);font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);transform:translateY(-1px)}
+.work-desc{margin:0;max-width:30rem;font-size:14.5px;line-height:1.62;color:var(--muted)}
+.work:hover .work-name,.work:focus-visible .work-name{border-bottom-color:var(--berry)}
 
 footer{
   display:flex;justify-content:space-between;align-items:baseline;gap:20px;
@@ -178,7 +185,22 @@ footer span:last-child{white-space:nowrap;opacity:.72}
 
       <div class="making r" style="--d:.82s">
         <p class="label">Making</p>
-        <p class="product"><a href="/kept/">Kept</a> — a quiet tracker for the habits, people, and places that make a life, and proof of which ones are working. <span>Coming to iPhone.</span></p>
+        <div class="works">
+          <a class="work" href="/kept/">
+            <img class="work-icon" src="/kept-icon.png" width="58" height="58" alt="Kept app icon" loading="lazy">
+            <div class="work-body">
+              <div class="work-top"><span class="work-name">Kept</span><span class="work-status">iPhone · Soon</span></div>
+              <p class="work-desc">A quiet tracker for the habits, people, and places that make a life — and proof of which ones are working.</p>
+            </div>
+          </a>
+          <a class="work" href="/plumb/">
+            <img class="work-icon" src="/plumb-icon.svg" width="58" height="58" alt="Plumb app icon" loading="lazy">
+            <div class="work-body">
+              <div class="work-top"><span class="work-name">Plumb</span><span class="work-status">In development</span></div>
+              <p class="work-desc">A camera that measures your mobility and tells the truth — joint range reported with its own margin of error, so only real change counts.</p>
+            </div>
+          </a>
+        </div>
       </div>
 
       <p class="contact r" style="--d:.96s"><a href="mailto:hello@mayhawco.com">hello@mayhawco.com</a></p>
