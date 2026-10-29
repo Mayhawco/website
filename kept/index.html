@@ -69,7 +69,10 @@ body{
 .top a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--hair);padding-bottom:2px;transition:border-color .4s,color .4s}
 .top a:hover,.top a:focus-visible{color:var(--ink);border-bottom-color:var(--berry)}
 
-h1{font-family:var(--display);font-weight:500;font-size:clamp(3rem,10vw,5.2rem);line-height:.98;letter-spacing:-.015em;margin:0 0 .18em}
+.head{display:flex;align-items:center;gap:clamp(16px,3vw,24px);margin:0 0 .18em}
+.appicon{flex:none;width:clamp(62px,12vw,84px);height:clamp(62px,12vw,84px);border-radius:20px;
+  box-shadow:0 0 0 1px rgba(233,237,227,.09),0 10px 30px rgba(0,0,0,.4)}
+h1{font-family:var(--display);font-weight:500;font-size:clamp(3rem,10vw,5.2rem);line-height:.98;letter-spacing:-.015em;margin:0}
 .lede{font-family:var(--display);font-weight:500;font-size:clamp(1.5rem,3.6vw,2.3rem);line-height:1.22;letter-spacing:-.01em;text-wrap:balance;margin:0 0 1.1rem;color:var(--ink)}
 .note{max-width:34rem;color:var(--muted);font-size:clamp(15px,1.2vw,16.5px);line-height:1.72;margin:0 0 clamp(40px,6vw,64px)}
 
@@ -131,7 +134,10 @@ footer a:hover,footer a:focus-visible{color:var(--ink);border-bottom-color:var(-
     <span>An app, made properly</span>
   </div>
 
-  <h1 class="r" style="--d:.15s">Kept</h1>
+  <div class="head r" style="--d:.15s">
+    <img class="appicon" src="/kept-icon.png" width="84" height="84" alt="Kept app icon">
+    <h1>Kept</h1>
+  </div>
   <p class="lede r" style="--d:.28s">The habits you keep, the people you reach, the places you go — and proof of which ones are working.</p>
   <p class="note r" style="--d:.4s">Most trackers ask you to believe streaks matter. Kept shows you. It quietly
   compares the days you kept a commitment against the days you missed it — against your real sleep, weight, and mood —
